@@ -1,99 +1,158 @@
-# 🔫 Weapon Detection System using YOLOv8
-
-## 📌 Overview
-
-This project is an AI-based **Weapon Detection System** built using **YOLOv8 (You Only Look Once)** and OpenCV.
-It detects weapons like guns or knives in real-time using images, videos, or webcam feed.
+# 🔫 Weapon Detection System using YOLOv8 on Edge (Jetson Nano)
 
 ---
 
-## 🚀 Features
+## 1. 📌 Project Title
 
-* Real-time weapon detection
-* Uses YOLOv8 deep learning model
-* Supports image, video, and live camera input
-* Modular code structure (training, inference, preprocessing)
+**Weapon Detection System using YOLOv8 with Edge Computing (Jetson Nano)**
 
 ---
 
-## 🛠️ Tech Stack
+## 2. ❗ Problem Statement
 
-* Python
-* OpenCV
-* YOLOv8 (Ultralytics)
-* NumPy
-* PyTorch
+The increasing need for security in public spaces such as schools, exam halls, and transport hubs requires automated systems to detect dangerous objects like weapons in real time.
 
----
+Manual monitoring is:
 
-## 📂 Project Structure
+* Time-consuming
+* Error-prone
+* Not scalable
 
-```
-WEAPON-DETECTION-SYSTEM/
-│
-├── main.py              # Entry point
-├── inference.py         # Detection logic
-├── training.py          # Model training
-├── preprocessing.py     # Data preprocessing
-├── utils.py             # Helper functions
-├── config.py            # Configurations
-├── logger.py            # Logging system
-├── requirements.txt     # Dependencies
-│
-├── models/              # Model files (if any)
-├── data/                # Sample dataset
-```
+This project aims to build an **AI-powered weapon detection system** capable of detecting weapons in real time using computer vision.
 
 ---
 
-## ⚙️ Installation
+## 3. ⚡ Role of Edge Computing
 
-1. Clone the repository:
+This system leverages **edge computing using Jetson Nano** to process data locally instead of relying on cloud servers.
 
-```
+### 🔹 Components running on Jetson Nano:
+
+* YOLOv8 model inference
+* Video frame processing (OpenCV)
+* Real-time detection output
+
+### 🔹 Why Edge instead of Cloud?
+
+* 🚀 **Low latency** → instant detection
+* 🔌 **Offline capability** → works without internet
+* 🔒 **Better privacy** → no data sent to cloud
+* ⚡ **Efficient processing** → optimized for real-time use
+
+---
+
+## 4. ⚙️ Methodology / Approach
+
+### 🔄 System Pipeline:
+
+**Input → Preprocessing → Model → Output**
+
+### 🔹 Steps:
+
+1. **Input**
+
+   * Video stream / webcam / image input
+
+2. **Preprocessing**
+
+   * Frame resizing
+   * Normalization
+   * Noise reduction
+
+3. **Model**
+
+   * YOLOv8 detects weapons using bounding boxes
+
+4. **Output**
+
+   * Detected objects displayed with labels
+   * Confidence score shown
+
+---
+
+## 5. 🧠 Model Details
+
+* Model: **YOLOv8 (Ultralytics)**
+* Type: CNN-based Object Detection Model
+* Framework: PyTorch
+* Input Size: 640x640 images
+* Output: Bounding boxes + class labels
+
+### 🔹 Optimization (Optional)
+
+* Can be optimized using **TensorRT** for Jetson Nano to improve FPS
+
+---
+
+## 6. 📊 Training Details
+
+* Dataset: Custom weapon detection dataset
+* Classes: Gun, Knife (example)
+* Training performed using YOLOv8 framework
+
+### 🔹 Training Process:
+
+* Data annotation
+* Model training using epochs
+* Validation after each epoch
+
+### 🔹 Metrics:
+
+* Loss vs Epoch
+* Accuracy vs Epoch
+
+(Note: Graphs can be added in future)
+
+---
+
+## 7. 📈 Results / Output
+
+### 🔹 Output:
+
+* Real-time detection of weapons
+* Bounding boxes around detected objects
+
+### 🔹 Performance:
+
+* System works in real-time
+* FPS depends on hardware
+
+### 🔹 Comparison:
+
+| Platform      | Performance             |
+| ------------- | ----------------------- |
+| Normal Laptop | Higher FPS              |
+| Jetson Nano   | Optimized but lower FPS |
+
+---
+
+## 8. ⚙️ Setup Instructions
+
+### 🔹 Clone Repository:
+
+```bash
 git clone https://github.com/nsingh3be24-droid/WEAPON-DETECTION-SYSTEM.git
 cd WEAPON-DETECTION-SYSTEM
 ```
 
-2. Install dependencies:
+### 🔹 Install Dependencies:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
----
+### 🔹 Run Project:
 
-## ▶️ Usage
-
-Run the project:
-
-```
+```bash
 python main.py
 ```
 
 ---
 
-## 🧠 Model Information
+## ⚠️ Notes
 
-* Model used: YOLOv8
-* Framework: Ultralytics
-* Trained on custom weapon dataset
-
-⚠️ Note: Due to GitHub size limits, model weights (.pt files) and full dataset are not included.
-
----
-
-## 📸 Sample Output
-
-(Add screenshots here if needed)
-
----
-
-## 📌 Future Improvements
-
-* Improve detection accuracy
-* Add alert system (sound/notification)
-* Deploy on edge devices
+* Model weights (.pt files) are not uploaded due to GitHub size limits
+* Dataset is also excluded; sample data can be added
 
 ---
 
@@ -102,7 +161,3 @@ python main.py
 Navraj Singh
 
 ---
-
-## 📄 License
-
-This project is for educational purposes.
