@@ -1,0 +1,54 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Weapon Detection System — Python Dependencies
+# Install:  pip install -r requirements.txt
+#
+# Minimum Python: 3.11
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Core ML / Vision ─────────────────────────────────────────────────────────
+ultralytics>=8.2.0          # YOLOv8 — training, inference, export
+torch>=2.2.0                # Deep learning backend
+torchvision>=0.17.0         # Image transforms used internally by ultralytics
+opencv-python>=4.9.0        # Video capture, frame processing, annotation
+
+# ── Numerical / Data ─────────────────────────────────────────────────────────
+numpy>=1.26.0
+pandas>=2.2.0               # Optional: logging detection events to CSV/DataFrame
+
+# ── Export Targets (install only what you need) ───────────────────────────────
+onnx>=1.16.0                # ONNX export (required for --format onnx)
+onnxruntime>=1.18.0         # ONNX runtime inference (CPU)
+# onnxruntime-gpu>=1.18.0   # Uncomment for CUDA ONNX inference
+# tensorrt>=10.0.0           # TensorRT (NVIDIA Jetson / server GPU only)
+
+# ── Data Labelling / Dataset (optional, comment out if not needed) ────────────
+# roboflow>=1.1.0            # Roboflow Python SDK for dataset download
+pyyaml>=6.0.1               # data.yaml read/write
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+tqdm>=4.66.0                # Progress bars during training / preprocessing
+Pillow>=10.3.0              # Image I/O (used by ultralytics internals)
+scipy>=1.13.0               # Optional: signal processing for temporal smoothing
+
+# ── UI Dashboard (optional — uncomment whichever you choose) ─────────────────
+# streamlit>=1.35.0          # Streamlit web dashboard
+# flask>=3.0.0               # Flask REST API / dashboard
+
+# ── Dev / Testing ────────────────────────────────────────────────────────────
+pytest>=8.2.0
+pytest-cov>=5.0.0
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EDGE HARDWARE NOTES
+# ─────────────────────────────────────────────────────────────────────────────
+# NVIDIA Jetson (Orin / Xavier):
+#   Install torch + torchvision from NVIDIA's wheel index, then:
+#   pip install ultralytics onnx pyyaml tqdm Pillow
+#
+# Raspberry Pi 4 / 5 (CPU only):
+#   pip install ultralytics onnxruntime pyyaml tqdm Pillow
+#   Use yolov8n.onnx for faster CPU inference.
+#
+# Intel NUC / x86 CPU:
+#   pip install ultralytics onnxruntime-openvino pyyaml tqdm Pillow
+#   Export with:  python main.py export --format openvino
