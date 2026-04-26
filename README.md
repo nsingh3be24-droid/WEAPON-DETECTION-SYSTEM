@@ -101,7 +101,6 @@ This system leverages **edge computing using Jetson Nano** to process data local
 * Loss vs Epoch
 * Accuracy vs Epoch
 
-(Note: Graphs can be added in future)
 
 ---
 
